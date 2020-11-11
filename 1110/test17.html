@@ -1,34 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue.js</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
+  </head>
+  <body>
+    <!--
+        vue 객체를 생성하고 객체의 관리 데이터로
+        회원의 정보를 관리한다.
+        회원 정보는 name, id, age 3가지로 구성되어 있다.
+
+        회원 정보를 수정할 수 있는 updateMember 기능을 가지고 있다.
+        회원의 이름, 아이디, 나이 중에서 나이를 수정할 수 있다.
+    -->
+
+        <div id="member">
+            <span>이름 : {{name}} </span> <br>
+            아이디 : <span v-text="id"></span> <br>
+            <span>나이 : {{age}} </span> <br>
+        
+            <!-- v-bind == : -->
+            <!-- v-on == @ -->
+            <p>회원정보 수정</p>
+            <!-- <input type="text" -->
+        </div>
+        <script>
+            new Vue({
+                el: '#member',
+                data: {
+                    name: "강유정",
+                    id: 'yj',
+                    age: 23
+                }
+            })
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div id="app">
-        <div>data : {{message}}</div>
-        <div>method kor : {{helloKor()}}</div>
-        <div>method eng : {{helloEng()}}</div>
+      <div>data : {{message}}</div>
+      <div>method kor : {{helloKor()}}</div>
+      <div>method eng : {{helloEng()}}</div>
     </div>
     <script>
-        new Vue({
-            el: "#app",
-            data: {
-                message: "Hello 싸피",
-                name: "안효인"
-            },
-            methods: {
-                helloEng() {
-                    return "Hello " + this.name
-                },
-                helloKor() {
-                    return "안녕 " + this.name
-                }
-            }
-        })
+      /*
+      // 선언적 함수
+      function helloEng() {}
+      // 표현식 - 익명 함수
+      let fn1 = function () {};
+      let name = 'hong';
+      let fns = {
+        // name: name,
+        name, // 바로 윗 줄을 이렇게 표현가능해짐
+        helloEng: function () {},
+        helloKor() {},
+      };
+      fns.helloEng();
+        */
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello 싸피',
+          name: '안효인',
+        },
+        methods: {
+          helloEng() {
+            return 'Hello ' + this.name;
+          },
+          helloKor() {
+            return '안녕 ' + this.name;
+          },
+        },
+        /*
+        아래는 옛날 표기법, 위는 요즘 표기법(ES6...?)
+        methods: {
+          helloEng : function() {
+            return 'Hello ' + this.name;
+          },
+          helloKor : function() {
+            return '안녕 ' + this.name;
+          },
+        },
+        */
+      });
     </script>
-</body>
+  </body>
 </html>
-

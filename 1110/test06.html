@@ -12,6 +12,7 @@
         <div>{{message + ' Vue~'}}</div>
         <div>{{num > 10 ? num * num : num + 100}}</div>
         <div>{{message.split("").reverse().join("")}}</div>
+        <div>{{ changeMsg('Gooood') }}</div>
         <div v-text="message + ' Vue~'"></div>
         <div v-text="num > 10 ? num * num : num + 100"></div>
         <div v-text="message.split('').reverse().join('')"></div>
@@ -22,7 +23,12 @@
             data: {
                 num: 5,
                 message: 'Hello'
-            }
+            },
+            methods: {
+                changeMsg: function (mg) {
+                    return (this.msg = mg);
+                }
+            },
         });
     </script>
 </body>

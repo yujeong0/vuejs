@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>뷰 적용</h2>
+
+      <!-- 단방향 -->
+      <h2>{{ msg }}</h2>
+      <!-- innerText-->
+      <h2 v-text="'text : ' + msg"></h2>
+      <!-- innerHtml-->
+      <h2 v-html="'html : ' + msg"></h2>
+      <h2 v-html="`html : ${msg}`"></h2>
+
+      <!-- 양방향 -->
+      <div><input type="text" v-model="msg" /></div>
+    </div>
+    <div></div>
+
+    <script>
+      //   let msg = 'vue';
+      //   console.log('hi ' + msg);
+      //   console.log(`h1 ${msg}`);
+
+      //   let app = document.querySelector('#app');
+
+      //   let vueData = {
+      //       msg: "vue"
+      //   };
+      new Vue({
+        el: '#app', // Element - Vue를 적용할 요소, css 선택자 + HTML 엘리먼트
+        // el: app // 이렇게도 가능. 그런데 위처럼 아이디가 제일 편할 듯?
+
+        // data 프로퍼티 : 함수는 컴포넌트 사용시 공유되는 문제를 해결하기 위해서 사용
+        data: {
+          // el 내부적으로 관리되는 property
+          msg: 'vue',
+        },
+        // data: vueData   // 이렇게도 가능하지만 위처럼 뷰 객체안에 쓰는 걸 더 많이 함
+        /*
+          data() {    // 컴포넌트 개념에서 위의 data 객체와 차이점 알 수 있음. 함수로 쓰면 매번 새로운 msg 를 만드는 느낌이다....!
+              return {
+                  msg: "vue"
+              }
+          }
+        */
+        /*
+          위와 같음
+          data: function() {
+              return {
+
+              }
+          }
+        */
+      });
+    </script>
+  </body>
+</html>

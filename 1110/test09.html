@@ -8,13 +8,20 @@
 </head>
 <body>
     <div id="app">
-        <div v-show="isShow">{{msg}}</div>
+        <div v-show="isShow">{{msg}}</div>  <!--렌더링 되는데 display 속성을 none으로 주냐 마냐 차이-->
+        <div v-show="isShow2">{{msg}}</div>  <!--렌더링 되는데 display 속성을 none으로 주냐 마냐 차이-->
+        <!-- <div v-show="여기에 자바스크립트에서 거짓이 되는 값을 넣으면 display none 들어가는거임">{{msg}}</div>  -->
+        <!--
+                자바스크립트에서 값이 거짓을 나타내는것
+                : 0, '', null, undefined, NaN
+        --> 
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
                 isShow: true,
+                isShow2: false,
                 msg: '보이나요?'
             }
         });

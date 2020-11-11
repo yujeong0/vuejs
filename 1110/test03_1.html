@@ -13,34 +13,47 @@
     </div>
 
     <script type="text/javascript">
-        new Vue({
+        // Proxy
+        let vm = new Vue({
             el: '#app',
             data: {
                 count: 0
             },
-            beforeCreate: function () {
-                console.log('beforeCreate count: ' + this.count);
+            beforeCreate: function () { // 아직 proxy 처리 안 된 상태(injection 안 된 상태) -> console 보면 undefined 임
+                console.log('beforeCreate count: ' + this.count);   // 여기서 this는 해당 Vue 객체이다.
             },
-            created: function () {
+            created: function () {  // 인스턴스 만들어진 상태니까 count가 0인 상태
                 console.log('created count: ' + this.count);
-                console.log('created 연결된 DOM 엘리먼트: ' + this.$el);
+                console.log('created 연결된 DOM 엘리먼트: ' + this.$el);    // 여긴 놓쳤다... 그런데 아직 el 과 실제 객체 연결되어 있지 않은 상태
             },
-            beforeMount: function () {
+            beforeMount: function () {  
                 console.log('beforeMount count: ' + this.count);
-                console.log('beforeMount 연결된 DOM 엘리먼트: ' + this.$el);
+                console.log('beforeMount 연결된 DOM 엘리먼트: ' + this.$el);    // 마운트될 때 el과 실제 요소 연결됨. console보면 object 연결되어있음
             },
             mounted: function () {
-                console.log('mounted count: ' + this.count);
+                console.log('mounted count: ' + this.count);    // 여기까지가 처음 호출
             },
-            beforeUpdate: function () {
+            beforeUpdate: function () { 
+                console.log(document.querySelector("#app > span").innerText);   // 변경되기 이전 값
                 console.log('beforeUpdate 호출됨');
                 console.log('beforeUpdate count: ' + this.count);
             },
             updated: function () {
+                console.log(document.querySelector("#app > span").innerText);   // 변경된 값
                 console.log('updated 호출됨');
-                console.log('beforeUpdate count: ' + this.count);
+                console.log('update count: ' + this.count);
             }
         });
+
+        console.dir(vm);
+
+        let vm2 = new Vue({
+            data: {
+                msg: "hello"
+            }
+        })
+        console.dir(vm2);
+        console.dir(vm2.msg);
     </script>
 </body>
 </html>

@@ -10,8 +10,8 @@
     <div id="app">
         <div>
             <h3>v-if VS v-show</h3>
-            <div v-if="condition">v-if div</div>
-            <div v-show="condition">v-show div</div>
+            <div v-if="condition">v-if div</div>    <!-- 여기는 그냥 div 가 사라지면서 주석 생김 -->
+            <div v-show="condition">v-show div</div>    <!-- 여기는 display: none; 이 추가됨 -->
         </div>
     </div>
     <script>

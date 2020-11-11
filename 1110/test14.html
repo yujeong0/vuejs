@@ -12,12 +12,15 @@
         <label>반수 : </label>
         <input type="number" v-model.number="count">
         <ul>
+                                            <!-- ==는 값만 같은 것. ===(일치 연산자)는 값과 타입이 둘 다 같아야 함 -->
             <li v-for="(region, index) in ssafy" v-if="region.count === count">
                 지역 : {{region.name}}, {{region.count}}개반
             </li>
         </ul>
     </div>
     <script>
+        console.log(0 == '0');  // true : 타입은 달라도 상관없다. 값만 같으면 됨
+        console.log(0 === '0');  // false : 타입과 값이 둘 다 같아야 함
         new Vue({
             el: "#app",
             data: {

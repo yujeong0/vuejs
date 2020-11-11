@@ -10,8 +10,8 @@
     <h2>template 태그 사용하기</h2>
     <div id="app">
         <label>반수 : </label>
-        <input type="number" v-model.number="count">
-        <template v-if="count % 2 == 0">
+        <input type="number" v-model.number="count">    <!-- v-mode.number 이라고하면 count를 숫자값으로 처리!!! 자주 쓰는 거임 기억해 -->
+        <template v-if="count % 2 == 0">    <!-- 템플릿해놓으면 태그가 없음!! 미쳤당 -->
             <h4>여러개의 태그를 묶어서 처리해야 한다면??</h4>
             <h4>template 태그를 사용해 보자</h4>
             <h4>만약에 template가 없다면?? 각태그마다 v-if?</h4>
