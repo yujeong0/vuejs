@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+        />
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <h1>Vue를 이용한 게시판</h1>
+        <table id="tbl" class="table">
+            <tr>
+                <th>번호</th>
+                <td>{{board.no}}</td>
+              </tr>
+              <tr>
+                <th>제목</th>
+                <td>{{board.title}}</td>
+              </tr>
+              <tr>
+                <th>작성자</th>
+                <td>{{board.writer}}</td>
+              </tr>
+              <tr>
+                <th>날짜</th>
+                <td>{{board.regtime}}</td>
+            </tr>
+            <tr>
+              <td colspan="2">{{board.content}}</td>
+          </tr>
+        </table>
+        <script>
+            // https://developer.mozilla.org/en-US/docs/Web/API/URL/URL
+            const params = new URL(document.location).searchParams;
+            const no = params.get('no');
+            console.dir(new URL(document.location));
+            console.dir(params.get('no'));
+
+            const boards = [
+                {
+                    no: 3,
+                    title: '프론트엔드 프레임워크',
+                    content: 'Vue는 프론트엔드의 인기있는 프레임워크 입니다.',
+                    writer: 'ssafy',
+                    regtime: '2020-05-30',
+                },
+                {
+                    no: 2,
+                    title: 'Vue를 배워봅시다',
+                    content: 'Vue와 Spring을 연동하자~',
+                    writer: 'ssafy',
+                    regtime: '2020-05-30',
+                },
+                {
+                    no: 1,
+                    title: 'Vue Axios 연동',
+                    content: 'Vue를 이용한 HTTP 통신',
+                    writer: 'ssafy',
+                    regtime: '2020-05-30',
+                },
+            ];
+            
+            var board;
+            for(let i = 0; i < boards.length; i++) {
+              if(boards[i].no == no){
+                console.dir(boards[i]);
+                  board = boards[i];
+                  break;
+              }
+            }
+            let vm = new Vue({
+                el: '#tbl',
+                data: {
+                    board
+                    // board : b
+                },
+            });
+            console.log(vm.board);
+        </script>
+    </body>
+</html>
