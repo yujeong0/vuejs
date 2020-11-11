@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="greet1('SSAFY')">Greet</button>
+      <button v-on:click="greet2($event, 'Ssafy')">Greet</button> <!-- 이 떄 발생한 이벤트 객체를 $event로 넘겨줌... 근데 윗 줄처럼 쓰지 이렇게 쓸 일 없다. -->
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          greet1: function (msg) {  // msg에 SSAFY 들어간다
+            alert('Hello ' + msg + '!');
+            console.log(event);
+            console.dir(event.target);  // 윈도우 프로퍼티에 할당된 event를 들고온다... 여기서 windows.event 랑 event 랑 같음..
+          },
+          greet2: function (e, msg) {
+            if (e) e.preventDefault();
+            alert('Hello ' + msg + '!');
+            console.dir(e.target);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

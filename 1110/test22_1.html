@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            접근자 프로퍼티(acessor property)
+            - 객체 안에 값을 설정(set), 추출(get)을 함수로 정의
+            - 설정된 값을 사용시 함수가 아닌 일반 프로퍼티처럼 사용
+        */
+
+        let data = {
+            get insa() {
+                return `${this._name}님 하이`;
+            },
+        };
+        // 함수호출처럼 안 씀!! 신기하당
+        console.log(data.insa);     // undefined님 하이
+        data.insa = '홍길동';       // set 호출(X)
+        console.log(data.insa);    // undefined님 하이
+        
+        let data2 = {
+            // _name: '홍길동',    // 이렇게 생기는 거 !!
+            set insa(name) {
+                this._name = name;  // _name 이라는 프로퍼티가 없었어도 부르면 자동 생성됨
+            },
+            get insa() {
+                return `${this._name}님 하이`;
+            },
+        };
+        console.log(data2.insa);     // undefined님 하이
+        data2.insa = '홍길동';       // set 호출
+        console.log(data2.insa);    // undefined님 하이
+
+        let m = {
+            name: 'hong',
+        };
+
+        delete m.name;  // 프로퍼티 제거 가능 wow~
+
+    </script>
+</body>
+</html>
