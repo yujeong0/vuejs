@@ -12,127 +12,67 @@
   <body>
     <h1>사원목록</h1>
 
-    <div>
-      <input type="text" />
-      <button>검색</button>
+    <div id="app">
+      <input
+        type="text"
+        name="searchName"
+        v-model="searchName"
+        @keyup.enter="searchEmp"
+      />
+      <button class="btn btn-primary" @click="searchEmp">검색</button>
+
+      <br /><br />
+      <a href="hrm_add.html">사원 추가</a>
+      <br /><br />
+      <table class="table">
+        <tr style="background-color: cadetblue">
+          <th>사원 아이디</th>
+          <th>사원명</th>
+          <th>부서</th>
+          <th>직책</th>
+          <th>연봉</th>
+        </tr>
+        <!-- <tr v-for="(emp, index) in items" :key="index" v-if="(emp.name).indexOf(searchName) !== -1"> -->
+        <tr v-for="(emp, index) in items" :key="index">
+          <td>{{emp.id}}</td>
+          <td>{{emp.name}}</td>
+          <td>{{emp.department}}</td>
+          <td>{{emp.position}}</td>
+          <td>{{emp.salary}}</td>
+        </tr>
+      </table>
     </div>
-    <br>
-    <table id="tbl" class="table">
-      <tr style="background-color: cadetblue">
-        <th>사원 아이디</th>
-        <th>사원명</th>
-        <th>부서</th>
-        <th>직책</th>
-        <th>연봉</th>
-      </tr>
-      <tr v-for="(emp, index) in emps" :key="index">
-        <td><a :href=`hrm_detail.html?id=${emp.id}`>{{emp.id}}</a></td>
-        <td>{{emp.name}}</td>
-        <td>{{emp.deptName}}</td>
-        <td>{{emp.title}}</td>
-        <td>{{emp.salary}}</td>
-      </tr>
-    </table>
-
     <script>
-      const emps = [
-        {
-          id: '1',
-          name: '박구곤',
-          deptName: '인사부',
-          title: '사장',
-          salary: '60000',
-        },
-        {
-          id: '18',
-          name: '서정주',
-          deptName: '기획부',
-          title: '사원',
-          salary: '13000',
-        },
-        {
-          id: '19',
-          name: '안창환',
-          deptName: '기획부',
-          title: '사원',
-          salary: '678',
-        },
-        {
-          id: '20',
-          name: '윤정숙',
-          deptName: '기획부',
-          title: '사원',
-          salary: '750',
-        },
-        {
-          id: '21',
-          name: '장현철',
-          deptName: '기획부',
-          title: '사원',
-          salary: '8500',
-        },
-        {
-          id: '23',
-          name: '강연범',
-          deptName: '영업부',
-          title: '사원',
-          salary: '795',
-        },
-        {
-          id: '24',
-          name: '오은경',
-          deptName: '기획부',
-          title: '사원',
-          salary: '860',
-        },
-        {
-          id: '27',
-          name: '장길산',
-          deptName: '영업부',
-          title: '과장',
-          salary: '12345',
-        },
-        {
-          id: '28',
-          name: '장취산',
-          deptName: '영업부',
-          title: '사원',
-          salary: '23244',
-        },
-        {
-          id: '29',
-          name: '김상순',
-          deptName: '기획부',
-          title: '사원',
-          salary: '20000',
-        },
-        {
-          id: '30',
-          name: '장삼봉',
-          deptName: '인사부',
-          title: '사원',
-          salary: '10000',
-        },
-        {
-          id: '31',
-          name: '백소정',
-          deptName: '인사부',
-          title: '사원',
-          salary: '20000',
-        },
-        {
-          id: '33',
-          name: '조현욱',
-          deptName: '회계부',
-          title: '사원',
-          salary: '1500',
-        },
-      ];
-
       new Vue({
-        el: '#tbl',
-        data: {
-          emps,
+        el: '#app',
+        data: function () {
+          return {
+            items: [],
+            searchName: '',
+          };
+        },
+        created() {
+          const emp = localStorage.getItem('employee');
+          let newemp = {
+            items: [],
+          };
+          if (emp) {
+            newemp = JSON.parse(emp);
+          } else {
+            localStorage.setItem('employee', JSON.stringify(newemp));
+          }
+          this.items = newemp.items;
+        },
+        methods: {
+          movePage() {
+            location.href = 'hrm_add.html';
+          },
+          searchEmp() {
+            let emps = JSON.parse(localStorage.getItem('employee')).items;
+            this.items = emps.filter((emp) => {
+              return emp.name.indexOf(this.searchName) !== -1 ? true : false;
+            });
+          },
         },
       });
     </script>
