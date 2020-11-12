@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>SSAFY HRM ADD EMPLOYEE</h1>
+
+    <div>
+        <div class="form-group">
+          <label for="name">이름</label>
+          <input type="text" id="name" ref="name" v-model="name">
+        </div>
+        <div class="form-group">
+          <label for="email">이메일</label>
+          <input type="text" id="email" ref="email" v-model="email">
+        </div>
+        <div class="form-group">
+          <label for="hiredate">고용일</label>
+          <input type="text" id="hiredate" ref="hiredate" placeholder="연도-월-일" v-model="hiredate">
+        </div>
+        <div class="form-group">
+          <label for="admin">관리자</label>
+          <input type="text" id="admin" ref="admin" v-model="admin">
+        </div>
+        <div class="form-group">
+          <label for="position">직책</label>
+          <input type="text" id="position" ref="position" v-model="position">
+        </div>
+        <div class="form-group">
+          <label for="department">부서</label>
+          <input type="text" id="department" ref="department" v-model="department">
+        </div>
+        <div class="form-group">
+          <label for="salary">월급</label>
+          <input type="text" id="salary" ref="salary" v-model="salary">
+        </div>
+        <div class="form-group">
+          <label for="commision">커미션</label>
+          <textarea type="text" id="commision" ref="commision" v-model="commision"></textarea>
+        </div>
+        <br>
+        <div class="text-right">
+          <button class="btn btn-primary" @click="checkHandler">사원추가</button>
+        </div>
+    </div>
+      
+</body>
+</html>

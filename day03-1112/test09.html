@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <h2>사용자 정의 이벤트</h2>
+    <div id="app">
+      <button v-on:click="doAction">메세지전송</button> <!--1. doAction 메소드 호출-->
+      <h2>{{message}}</h2>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          message: '',
+        },
+        methods: {
+          doAction() {  // 2. emit 함수로 sendMsg 호출
+            this.$emit('sendMsg', '안녕하세요 여러분'); // 이벤트 호출할 때 사용하는 emit
+          },
+        },
+        created() {   // ↓ sendMsg 가 호출되길 기다리고 있다.(on)
+          this.$on('sendMsg', (msg) => {  // 3. 해당 Vue객체의 message 가 파라미터로 받은 msg 로 바뀜
+            alert(msg);
+            this.message = msg;
+          });
+        },
+      });
+    </script>
+  </body>
+</html>

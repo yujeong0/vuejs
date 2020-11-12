@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>      <!-- 자식은 $emit 하면 되는데 부모는 on 안 쓴다...? -->
+    <div id="app">
+      <h4>당신이 좋아하는 파트를 선택하세요</h4>
+      <h2>총 투표수 : {{ total }}</h2>
+
+      <!-- root component(app) 의 자식 subject 두 개 -->
+      <subject v-on:addtotcount="addTotalCount" title="코딩"></subject>     <!-- addTotalCount = 부모의 함수-->
+      <subject v-on:addtotcount="addTotalCount" title="알고리즘"></subject> <!-- v-on: 뒤에 나오는 addtotcount = 나(자식)의 함수-->
+    </div>                                  <!-- title은 부모의 것....? 왜? -->
+    <script>
+      Vue.component('Subject', {
+        template: '<button v-on:click="addCount">{{ title }} - {{ count }}</button>',
+        props: ['title'],
+        data: function () {
+          return {
+            count: 0,
+          };
+        },
+        methods: {
+          addCount: function () {
+            this.count += 1;
+            // 부모 v-on:이름 에 해당하는 이름의 이벤트를 호출
+            this.$emit('addtotcount');  // 자식이 부모한테 뭔가 전달할 때는 이벤트 활용한다. emit()
+          },
+        },
+      });
+
+      new Vue({
+        el: '#app',
+        data: {
+          total: 0,
+        },
+        methods: {
+          addTotalCount: function () {  // root component에 addTotalCount 라는 함수가 존재
+            this.total += 1;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
