@@ -69,7 +69,7 @@
           },
           searchEmp() {
             let emps = JSON.parse(localStorage.getItem('employee')).items;
-            this.items = emps.filter((emp) => {
+            this.items = emps.filter((emp) => { // 화살표 함수에서는 이 함수를 감싸고 있는 객체가 this 라고 생각.. 지금에서는 이 Vue 객체..!
               return emp.name.indexOf(this.searchName) !== -1 ? true : false;
             });
           },
