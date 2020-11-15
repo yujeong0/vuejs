@@ -43,7 +43,6 @@ export default {
     },
     created() {
         axios.get('http://localhost:8097/hrmboot/api/employee/all').then(({ data }) => {
-            console.log(data);
             this.items = data;
         });
     },
