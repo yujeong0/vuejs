@@ -38,6 +38,8 @@ Vue.use(Vuex);
 //   getters: {
 //     // 복잡한 계산식을 처리 : computed
 //     countMsg(state) {
+//       //  여기서 this 사용 불가능!!!!!!!!!!!!!!!!!!!!*******************
+//       // console.log('this', this);
 //       // return state.count + '번 호출됨';
 //       let msg = "10번보다 ";
 //       if (state.count > 10) {
@@ -60,47 +62,41 @@ Vue.use(Vuex);
 // });
 
 //step04
-export default new Vuex.Store({
-  state: {
-    count: 0,
-  },
-  mutations: {
-    ADD_ONE(state) {
-      state.count += 1;
-    },
-    ADD_COUNT(state, payload) {
-      state.count += payload;
-    },
-    ADD_OBJ_COUNT(state, payload) {
-      state.count += payload.num;
-    },
-  },
-  getters: {
-    // 복잡한 계산식을 처리 : computed
-    countMsg(state) {
-      // return state.count + '번 호출됨';
-      let msg = "10번보다 ";
-      if (state.count > 10) {
-        msg += "많이 ";
-      } else {
-        msg += "적게 ";
-      }
-      return msg + " 호출됨(" + state.count + ")";
-    },
-  },
-});
+// export default new Vuex.Store({
+//   state: {
+//     count: 0,
+//   },
+//   mutations: {
+//     ADD_ONE(state) {  // mutation은 모두 다 대문자로 쓰고 언더바 사용하는 것을 권장한다.
+//       state.count += 1;
+//     },
+//     ADD_COUNT(state, num) {
+//       state.count += num;
+//     },
+//     ADD_OBJ_COUNT(state, payload) {
+//       state.count += payload.num;
+//       console.log(payload.msg);
+//     },
+//   },
+//   getters: {
+//     // 복잡한 계산식을 처리 : computed
+//     countMsg(state) {
+//       // return state.count + '번 호출됨';
+//       let msg = "10번보다 ";
+//       if (state.count > 10) {
+//         msg += "많이 ";
+//       } else {
+//         msg += "적게 ";
+//       }
+//       return msg + " 호출됨(" + state.count + ")";
+//     },
+//   },
+// });
 
 //step05
 // export default new Vuex.Store({
 //   state: {
 //     count: 0,
-//   },
-//   actions: {
-//     asyncAddOne(context) {
-//       setTimeout(() => {
-//         context.commit("addOne");
-//       }, 2000);
-//     },
 //   },
 //   mutations: {
 //     ADD_ONE(state) {
@@ -129,42 +125,42 @@ export default new Vuex.Store({
 // });
 
 //step06
-// export default new Vuex.Store({
-//   state: {
-//     count: 0,
-//   },
-//   actions: {
-//     asyncAddOne(context) {
-//       setTimeout(() => {
-//         context.commit("addOne");
-//       }, 2000);
-//     },
-//   },
-//   mutations: {
-//     ADD_ONE(state) {
-//       state.count += 1;
-//     },
-//     ADD_TEN_COUNT(state, payload) {
-//       state.count += payload;
-//     },
-//     ADD_OBJ_COUNT(state, payload) {
-//       state.count += payload.num;
-//     },
-//   },
-//   getters: {
-//     // 복잡한 계산식을 처리 : computed
-//     countMsg(state) {
-//       // return state.count + '번 호출됨';
-//       let msg = "10번보다 ";
-//       if (state.count > 10) {
-//         msg += "많이 ";
-//       } else {
-//         msg += "적게 ";
-//       }
-//       return msg + " 호출됨(" + state.count + ")";
-//     },
-//   },
-// });
+export default new Vuex.Store({
+  state: {
+    count: 0,
+  },
+  actions: {
+    asyncAddOne(context) {
+      setTimeout(() => {  // setTimeout : 비동기함수!!
+        context.commit("ADD_ONE");
+      }, 2000);
+    },
+  },
+  mutations: {
+    ADD_ONE(state) {
+      state.count += 1;
+    },
+    ADD_TEN_COUNT(state, payload) {
+      state.count += payload;
+    },
+    ADD_OBJ_COUNT(state, payload) {
+      state.count += payload.num;
+    },
+  },
+  getters: {
+    // 복잡한 계산식을 처리 : computed
+    countMsg(state) {
+      // return state.count + '번 호출됨';
+      let msg = "10번보다 ";
+      if (state.count > 10) {
+        msg += "많이 ";
+      } else {
+        msg += "적게 ";
+      }
+      return msg + " 호출됨(" + state.count + ")";
+    },
+  },
+});
 
 //step07
 // export default new Vuex.Store({
@@ -191,7 +187,7 @@ export default new Vuex.Store({
 //   },
 //   getters: {
 //     // 복잡한 계산식을 처리 : computed
-//     countMsg(state) {
+//     countMsg(state) {   // count 값이 바뀌기 전까지는 캐싱되어있던 결과를 반환하고, count가 바뀌면 다시 연산해서 결과 반환
 //       // return state.count + '번 호출됨';
 //       let msg = '10번보다 ';
 //       if (state.count > 10) {

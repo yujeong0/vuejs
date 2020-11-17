@@ -39,7 +39,7 @@ export default {
       // this.$store.commit('addObjCount', { num });
       this.addMObjCount({ num });
     },
-    asyncCount() {
+    asyncCount() {  // store의 actions를 직접 호출할 때 dispatch 를 사용한다.
       this.$store.dispatch("asyncAddOne");
     },
   },

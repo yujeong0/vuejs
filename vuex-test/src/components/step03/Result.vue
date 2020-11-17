@@ -16,9 +16,11 @@
 <script>
 import { mapGetters } from "vuex";
 
+console.dir(mapGetters(["countMsg", "msg1", "msg2", "msg3"]));
+
 export default {
   computed: {
-    ...mapGetters(["countMsg", "msg1", "msg2", "msg3"]),
+    ...mapGetters(["countMsg", "msg1", "msg2", "msg3"]),  // spread operator: 객체 속성 넣기~
     total() {
       return this.$store.state.count;
     },

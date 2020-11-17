@@ -7,6 +7,7 @@
 </template>
 
 <script>
+// console.dir([ "ADD_ONE","ADD_TEN_COUNT","ADD_OBJ_COUNT"]);
 import { mapMutations } from "vuex";
 export default {
   name: "Subject",

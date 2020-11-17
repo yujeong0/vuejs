@@ -16,7 +16,7 @@ export default {
     };
   },
   methods: {
-    addCount: function() {
+    addCount: function() {  // 메소드는 주로 카멜표기법 사용
       this.count += 1;
       this.$store.commit("ADD_ONE");
       // this.$store.state.count++;
@@ -28,7 +28,7 @@ export default {
     addObjCount: function() {
       let num = Math.round(Math.random() * 100);
       this.count += num;
-      this.$store.commit("ADD_OBJ_COUNT", { num });
+      this.$store.commit("ADD_OBJ_COUNT", { num, msg: 'count 값 증가' });
     },
   },
 };
