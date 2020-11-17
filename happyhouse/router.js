@@ -10,12 +10,12 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '*',
       name: 'index',
       component: Index,
     },
     {
-      path: '*',
+      path: '/list',
       name: 'list',
       component: List,
     },

@@ -1,12 +1,14 @@
-import Index from './components/Index.js';
-import List from './components/List.js';
-import Create from './components/Create.js';
-import Read from './components/Read.js';
-import Update from './components/Update.js';
-import Delete from './components/Delete.js';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Index from '@/page/index.vue';
+import List from '@/page/list.vue';
+import Create from '@/page/create.vue';
+import Read from '@/page/read.vue';
+import Update from '@/page/update.vue';
+import Delete from '@/page/delete.vue'; // @/ 하면 root 밑에서 찾는 느낌..?
 
 Vue.use(VueRouter);
-export default new VueRouter({
+export const router = new VueRouter({
   mode: 'history',
   routes: [
     {
@@ -15,7 +17,7 @@ export default new VueRouter({
       component: Index,
     },
     {
-      path: '*',
+      path: '/list',
       name: 'list',
       component: List,
     },
