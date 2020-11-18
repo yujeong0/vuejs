@@ -45,7 +45,8 @@ export default {
     };
   },
   created() {
-    http
+    /*
+    http    // promise 객체 줬으니까 then 과 catch 쓴 것!!
       .get('/board')
       .then(({ data }) => {
         this.items = data;
@@ -53,8 +54,21 @@ export default {
       .catch(() => {
         alert('에러가 발생했습니다.');
       });
+    */
+   
+   // 위를 async와 await로 바꾸기 !! 짱 신기~
+    // let { data } = await http.get('/board');    
+    this.getBoard()
   },
   methods: {
+    async getBoard() {
+      try {
+        let { data } = await http.get('/board');    
+        this.items = data;
+      } catch(error) {
+          alert('에러가 발생했습니다.');
+      }
+    },
     movePage() {
       this.$router.push('/create');
     },

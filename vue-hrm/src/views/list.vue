@@ -12,7 +12,7 @@
         <br /><br />
         <div v-if="items.length">
         <table class="table">
-            <tr style="background-color: cadetblue">
+            <tr>
                 <th>사원 아이디</th>
                 <th>사원명</th>
                 <th>이메일</th>
@@ -22,6 +22,7 @@
                 <th>부서 아이디</th>
                 <th>연봉</th>
                 <th>커미션</th>
+                <th>삭제</th>
             </tr>
             <list-row v-for="(item, index) in items"
                     :key="`${index}_items`"
