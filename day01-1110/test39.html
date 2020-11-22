@@ -9,23 +9,23 @@
   <body>
     <div id="app">
       <div>
-        <p>수업을 듣는 지역을 선택하시오</p>
-        <select v-model="selectedArea">
+        <p>과일 선택</p>
+        <select v-model="selectedFruit">
           <option v-for="option in options" v-bind:value="option.value">{{ option.text }}</option>
         </select>
       </div>
-      <span>선택한 지역 : {{ selectedArea }}</span>
+      <span>선택한 과일 : {{ selectedFruit }}</span>
     </div>
     <script>
       new Vue({
         el: '#app',
         data: {
-          selectedArea: '',
+          selectedFruit: '',
           options: [
-            { text: '서울', value: 'seoul' },
-            { text: '광주', value: 'gwangju' },
-            { text: '대전', value: 'daejeon' },
-            { text: '구미', value: 'gumi' },
+            { text: '사과', value: 'apple' },
+            { text: '포도', value: 'grape' },
+            { text: '수박', value: 'watermelon' },
+            { text: '딸기', value: 'strawberry' },
           ],
         },
       });

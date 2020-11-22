@@ -8,14 +8,14 @@
   </head>
   <body>
     <div id="app">
-      <button v-on:click="greet1('SSAFY')">Greet</button>
-      <button v-on:click="greet2($event, 'Ssafy')">Greet</button> <!-- 이 떄 발생한 이벤트 객체를 $event로 넘겨줌... 근데 윗 줄처럼 쓰지 이렇게 쓸 일 없다. -->
+      <button v-on:click="greet1('yujeong')">Greet</button>
+      <button v-on:click="greet2($event, 'yujeong')">Greet</button> <!-- 이 때 발생한 이벤트 객체를 $event로 넘겨줌... 근데 윗 줄처럼 쓰지 이렇게 쓸 일 없다. -->
     </div>
     <script>
       new Vue({
         el: '#app',
         methods: {
-          greet1: function (msg) {  // msg에 SSAFY 들어간다
+          greet1: function (msg) {  // msg에 yujeong 들어간다
             alert('Hello ' + msg + '!');
             console.log(event);
             console.dir(event.target);  // 윈도우 프로퍼티에 할당된 event를 들고온다... 여기서 windows.event 랑 event 랑 같음..
